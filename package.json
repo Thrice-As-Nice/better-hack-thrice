@@ -1,5 +1,17 @@
 {
 	"name": "tg-mini-auth",
+	"version": "0.0.1",
+	"description": "A Better Auth Plugin for Telegram Mini App authentication.",
+	"authors": [
+		"Dagim G. Astatkie",
+		"Wendimu Sitotaw",
+		"Ermias S. Deresse"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Thrice-as-Nice/better-hack-thrice"
+	},
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
@@ -13,7 +25,8 @@
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "^5"
+		"typescript": "^5",
+		"better-auth": "^1.3.26"
 	},
 	"dependencies": {
 		"@biomejs/biome": "^2.2.5"
