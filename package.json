@@ -1,0 +1,21 @@
+{
+	"name": "tg-mini-auth",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"dev": "bun run --watch src/index.ts",
+		"build": "biome check --write .",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"check": "biome check . --write"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@biomejs/biome": "^2.2.5"
+	}
+}
