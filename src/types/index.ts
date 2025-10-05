@@ -155,3 +155,13 @@ export interface TelegramUserData extends User {
   photo_url: string;
   is_premium: boolean;
 }
+
+export interface TelegramValidationOptions {
+	/**
+	 * Time in seconds which states, how long from creation time init data is considered valid.
+	 *
+	 * In case this value is equal to 0, the function does not check init data expiration.
+	 * @default 86400 (1 day)
+	 */
+	expiresIn?: number;
+}
