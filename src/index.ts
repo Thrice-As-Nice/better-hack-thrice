@@ -6,7 +6,6 @@ import type { TelegramMiniAppOptions, TelegramUserData } from "./types";
 import { getOriginHostname } from "./utils/getOriginHostName";
 import { verifyTelegramInitData } from "./utils/verifyInitData";
 
-
 export const telegramMiniAppAuth = (
 	options: TelegramMiniAppOptions,
 ): BetterAuthPlugin => {
@@ -37,11 +36,11 @@ export const telegramMiniAppAuth = (
 					const { initData } = ctx.body;
 					const { botToken } = options;
 
-					console.log('initData', initData);
-					console.log('botToken', botToken);
+					console.log("initData", initData);
+					console.log("botToken", botToken);
 
 					const userData = verifyTelegramInitData(initData, botToken);
-					console.log('userData', userData);
+					console.log("userData", userData);
 					const domain = getOriginHostname(ctx.context.baseURL);
 					const userEmail = `telegram-${userData.id}@${domain}`;
 
@@ -50,26 +49,26 @@ export const telegramMiniAppAuth = (
 						where: [{ field: "telegramId", value: userData.id.toString() }],
 					});
 
-				if (!user) {
-					user = await ctx.context.internalAdapter.createUser(
-						{
-							telegramId: userData.id.toString(),
-							name: `${userData.first_name} ${
-								userData.last_name || ""
-							}`.trim(),
-							email: userEmail,
-							emailVerified: false,
-							createdAt: new Date(),
-							updatedAt: new Date(),
-							firstName: userData.first_name,
-							lastName: userData.last_name,
-							username: userData.username,
-							photoUrl: userData.photo_url,
-							isPremium: userData.is_premium || false,
-						},
-						ctx,
-					);
-				}
+					if (!user) {
+						user = await ctx.context.internalAdapter.createUser(
+							{
+								telegramId: userData.id.toString(),
+								name: `${userData.first_name} ${
+									userData.last_name || ""
+								}`.trim(),
+								email: userEmail,
+								emailVerified: false,
+								createdAt: new Date(),
+								updatedAt: new Date(),
+								firstName: userData.first_name,
+								lastName: userData.last_name,
+								username: userData.username,
+								photoUrl: userData.photo_url,
+								isPremium: userData.is_premium || false,
+							},
+							ctx,
+						);
+					}
 
 					const newSession = await ctx.context.internalAdapter.createSession(
 						user.id,
@@ -107,3 +106,4 @@ export const telegramMiniAppAuth = (
 };
 
 export { betterAuthTgMiniAppClientPlugin } from "./client";
+export { getTelegramInitData } from "./utils/client-helpers";
