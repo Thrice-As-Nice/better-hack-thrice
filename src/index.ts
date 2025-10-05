@@ -1,7 +1,6 @@
 import type { BetterAuthPlugin } from "better-auth";
 import { setSessionCookie } from "better-auth/cookies";
 import { createAuthEndpoint } from "better-auth/plugins";
-import * as z from "zod";
 import type { TelegramMiniAppOptions, TelegramUserData } from "./types";
 import { getOriginHostname } from "./utils/getOriginHostName";
 import { verifyTelegramInitData } from "./utils/verifyInitData";
@@ -13,12 +12,9 @@ export const telegramMiniAppAuth = (
 		id: "tg-mini-auth",
 		endpoints: {
 			authenticate: createAuthEndpoint(
-				"/auth/telegram-mini-app",
+				"/telegram-mini-app",
 				{
-					method: "POST",
-					body: z.object({
-						initData: z.string().min(1),
-					}),
+					method: "GET",
 					metadata: {
 						openapi: {
 							summary: "Authenticate Telegram Mini App",
@@ -33,8 +29,11 @@ export const telegramMiniAppAuth = (
 					},
 				},
 				async (ctx) => {
-					const { initData } = ctx.body;
+					const initData = ''
+					const url = ctx.request?.url;
 					const { botToken } = options;
+
+					console.log('url', url);
 
 					const userData = verifyTelegramInitData(initData, botToken);
 					const domain = getOriginHostname(ctx.context.baseURL);
