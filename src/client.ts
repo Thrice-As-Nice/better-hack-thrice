@@ -7,5 +7,8 @@ export const betterAuthTgMiniAppClientPlugin = () => {
 	return {
 		id: "tg-mini-auth",
 		$InferServerPlugin: {} as ReturnType<TelegramMiniAppPlugin>,
+		pathMethods: {
+			"/sign-in/telegram-mini-app": "POST",
+		},
 	} satisfies BetterAuthClientPlugin;
 };
