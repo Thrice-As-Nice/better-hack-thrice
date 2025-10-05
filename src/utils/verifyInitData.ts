@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import type { TelegramValidationOptions, User } from "../types";
+import type { TelegramUser, TelegramValidationOptions } from "../types";
 import {
 	AuthDateInvalidError,
 	ExpiredError,
@@ -66,7 +66,7 @@ export function verifyTelegramInitData(
 	initData: string,
 	botToken: string,
 	options?: TelegramValidationOptions,
-): User {
+): TelegramUser {
 	validateInitData(initData, botToken, options);
 
 	const parsed = parseInitData(initData);
@@ -75,5 +75,5 @@ export function verifyTelegramInitData(
 		throw new Error("User data is missing from Telegram init data");
 	}
 
-	return parsed.user;
+	return parsed.user as TelegramUser;
 }

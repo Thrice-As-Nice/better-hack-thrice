@@ -2,9 +2,9 @@ import type { BetterAuthPlugin } from "better-auth";
 import { setSessionCookie } from "better-auth/cookies";
 import { createAuthEndpoint } from "better-auth/plugins";
 import * as z from "zod";
-import { verifyTelegramInitData } from "./utils/verifyInitData";
 import type { TelegramMiniAppOptions, TelegramUserData } from "./types";
 import { getOriginHostname } from "./utils/getOriginHostName";
+import { verifyTelegramInitData } from "./utils/verifyInitData";
 
 export const telegramMiniAppAuth = (
 	options: TelegramMiniAppOptions,

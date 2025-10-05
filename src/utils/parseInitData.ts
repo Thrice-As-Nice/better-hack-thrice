@@ -1,4 +1,4 @@
-import type { Chat, InitData, User } from "../types";
+import type { Chat, InitData, TelegramUser } from "../types";
 
 /**
  * Parses Telegram Mini App init data from a query string.
@@ -18,7 +18,7 @@ export function parseInitData(initData: string): InitData {
 			case "receiver":
 				// Parse JSON strings for user objects
 				try {
-					result[key] = JSON.parse(decodeURIComponent(value)) as User;
+					result[key] = JSON.parse(decodeURIComponent(value)) as TelegramUser;
 				} catch {
 					result[key] = undefined;
 				}
