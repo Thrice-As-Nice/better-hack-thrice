@@ -6,7 +6,18 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": [
+			"src/**/*",
+			"*.js",
+			"*.ts",
+			"*.json",
+			"*.md",
+			"package.json",
+			"tsconfig.json",
+			"tsup.config.ts",
+			"biome.json"
+		]
 	},
 	"formatter": {
 		"enabled": true,
