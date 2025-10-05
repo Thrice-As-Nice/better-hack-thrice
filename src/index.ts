@@ -10,7 +10,7 @@ export const telegramMiniAppAuth = (
 	options: TelegramMiniAppOptions,
 ): BetterAuthPlugin => {
 	return {
-		id: "telegram-mini-app",
+		id: "tg-mini-auth",
 		endpoints: {
 			authenticate: createAuthEndpoint(
 				"/auth/telegram-mini-app",
@@ -98,3 +98,5 @@ export const telegramMiniAppAuth = (
 		},
 	};
 };
+
+export { betterAuthTgMiniAppClientPlugin } from "./client";
